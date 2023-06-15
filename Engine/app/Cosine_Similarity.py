@@ -30,8 +30,6 @@ class Cosine_Similarity:
 
         sim_sort = sorted(sim.items(), key=lambda x: x[0], reverse = True)
 
-        for v in sim_sort:
-            if v != 0.0:
-                print ("Nilai Kemiripan : ",v)
+        return sim_sort
 
                     

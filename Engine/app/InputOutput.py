@@ -23,42 +23,59 @@ class InputOutput:
         excel_data = pd.read_excel("F:/Skripsi/source/dataset.xlsx")
         judul = excel_data ["JUDUL_LAPORAN"]
 
+        ##hasil = str(judul)
+
         return judul
     
     datajudul = ambil_data()
 
 
-    def textprosessing (t, datajudul):
-        hasillowercase = Pemrosesan.lowercase(t, datajudul)
-        print ("Hasil Lower Case : ")
-        print (hasillowercase)
+    def textprosessing (t):
+        hasillowercase = Pemrosesan.penggabunganjudul(t)
+        print ("Hasil Preprosessing Inputan : ", hasillowercase)
+    textprosessing(t)
 
-
-    textprosessing(t,datajudul)
+    #def textprosessingjudul (datajudul):
+    #    hasillowercase = Pemrosesan.penggabunganjudul(datajudul)
+    #    print ("Hasil Preprosessing Judul : ")
+    #    print (hasillowercase)
+    #textprosessingjudul(datajudul)
 
     
-    def outputstemming (t, datajudul):
-        hasilstemming = Pemrosesan.stemming(t, datajudul)
-        print ("Hasil Stemming : ")
-        print (hasilstemming)
+    #def outputstemming (t):
+    #    hasilstemming = Pemrosesan.stemming(t)
+    #    print ("Hasil Stemming : ", hasilstemming)
 
-    outputstemming(t, datajudul)
+    #outputstemming(t)
+
+    #def outputstemmingjudul (datajudul):
+    #    hasilstemming = Pemrosesan.stemming(datajudul)
+    #    print ("Hasil Stemming : ")
+    #    print (hasilstemming)
+
+    #outputstemmingjudul(datajudul)
         
     
-    def outputstopword_removal(t, datajudul):
-        hasilstop_removal = Pemrosesan.stopword_removal(t, datajudul)
-        print ("Hasil Stopword Removal : ")
-        print (hasilstop_removal)
+    #def outputstopword_removal(t):
+    #    hasilstop_removal = Pemrosesan.stopword_removal(t)
+    #    print ("Hasil Stopword Removal : ", hasilstop_removal)
+    
+    #outputstopword_removal(t)
 
-    outputstopword_removal(t, datajudul)
+    #def outputstopword_removaljudul(datajudul):
+    #    hasilstop_removal = Pemrosesan.stopword_removal(datajudul)
+    #    print ("Hasil Stopword Removal : ")
+    #    print (hasilstop_removal)
     
-    ##def hasilpembobotanjudul(datajudul):
-    ##    hasilTF_IDF = Datareader.Tf_IDF(datajudul)
-    ##    print (hasilTF_IDF)
+    #outputstopword_removaljudul(datajudul)
+    
+    #def hasilpembobotanjudul(datajudul):
+    #    hasilTF_IDF = Datareader.Tf_IDF(datajudul)
+    #    print (hasilTF_IDF)
         
-    ##    return hasilTF_IDF
+    #    return hasilTF_IDF
     
-    ##hasilpembobotanjudul(datajudul)
+    #hasilpembobotanjudul(datajudul)
 
     ##datapembobotan = hasilpembobotanjudul(datajudul)
 
