@@ -3,20 +3,77 @@ from nltk.tokenize import word_tokenize
 import string, re
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 from nltk.corpus import stopwords
+from Pembobotan import *
+import pandas as pd
+import numpy as np
+
 
 class Pemrosesan:
 
-    def penggabunganjudul(teks):
-        text = Pemrosesan.lowercase(teks)
-        text2 = Pemrosesan.stopword_removal(text)
-        text3 = Pemrosesan.stemming(text2)
+    def eksekusiinputan(teks, judul):
+        #tampungteks = []
+        hasillowercaseteks = Pemrosesan.lowercase(teks)
+        hasilstopwordteks = Pemrosesan.stemming(hasillowercaseteks)
+        hasilstemmingteks = Pemrosesan.stemming(hasilstopwordteks)
+        
+        #tampungteks.append(hasilstemmingteks)
 
-        return text3
+        #myCosine.perhitungankemiripan(hasillowercaseteks)
     
-    def lowercase(text):
-        text = str(text)
-        text = text.encode('utf-8').decode('ascii', 'ignore')
-        text = text.lower()
+        
+        tampung = []
+        for i in judul:
+            judulx = str(i)
+            hasillowercase = Pemrosesan.lowercase(judulx)
+            #hasilstopword = Pemrosesan.stopword_removal(hasillowercase)
+            #hasilstemming = Pemrosesan.stemming(hasilstopword)
+            #hasil = pd.Series(hasilstemming)
+            tampung.append(hasillowercase)
+        
+        print (tampung)
+        #print("list Judul : ",tampung)
+        # #ModelTF_IDF.createmodel(hasilstemmingteks,tampung)
+        ModelTF_IDF.createmodel(hasillowercaseteks,tampung)
+        # #myCosine.perhitungankemiripan(hasilstemmingteks)
+        
+        
+            
+
+
+        
+        # judul2 = Pemrosesan.stopword_removal(judul1)
+        # text2 = Pemrosesan.stopword_removal(text)
+        
+        # text3 = Pemrosesan.stemming(text2)
+        # judul3 = Pemrosesan.stemming(judul2)
+
+        #tes = judul1.split('\n')
+        #hasil = pd.Series(judul1)
+        #print (judul1)
+        #ModelTF_IDF.createmodel(text, hasil)
+        #model = ModelTF_IDF.createmodel(hasil)
+
+        #hasil = myCosine.perhitungankemiripan(text3, judul3)
+
+        return
+    
+    # def eksekusijudul(teks):
+    #     text = Pemrosesan.lowercase(teks)
+    #     text2 = Pemrosesan.stopword_removal(text)
+    #     text3 = Pemrosesan.stemming(text2)
+
+    #     ##hasil = pd.Series(text3)
+    #     hasil_TF_IDF = Datareader.ambildatapreprosessing(text3)
+
+    #     hasilsimilarity = myCosine.perhitungankemiripan(text3, hasil_TF_IDF)
+
+    #     return hasilsimilarity
+    
+    # def casefolding (textawal):
+    #     text = textawal.str.lower()
+    
+    def lowercase(text):    
+        text = str.lower(text)
         text = re.sub('[%s]' % re.escape(string.punctuation.replace('?', '')), '', text)
         text = re.sub("[^a-zA-Z0-9\s:\n\\n]+@]", '', text)
         text = re.sub('www\S+', '', text)
@@ -32,9 +89,14 @@ class Pemrosesan:
         
 
         return text
+    
+    #def tokenize (text):
+     #   text = word_tokenize(text)
 
     
     def stopword_removal (text):
+        # if isinstance (text, list):
+        #     text = ' '.join(text)
         text = str(text)
         liststopword = set(stopwords.words('indonesian'))
         wordx = [word for word in text.split() if word not in liststopword]

@@ -3,9 +3,9 @@ import string
 import re
 import nltk
 import numpy as np
-from Pemrosesan_kata import *
-from Cosine_Similarity import *
+from Pemrosesan_kata import Pemrosesan
 from Pembobotan import *
+from Cosine_Similarity import *
 
 
 
@@ -22,24 +22,66 @@ class InputOutput:
 
         excel_data = pd.read_excel("F:/Skripsi/source/dataset.xlsx")
         judul = excel_data ["JUDUL_LAPORAN"]
-
         ##hasil = str(judul)
+        
 
         return judul
     
     datajudul = ambil_data()
 
+    # def corpuscontoh ():
+    #     corpus = ['Ikhsan kayang di mall', 
+    #               'Nanda nginep dirumah ikhsan',
+    #               'Agung Maen kostan nanda']
+        
+    #     print (corpus)
+    #     return corpus
+    # contohcorpus = corpuscontoh()
 
-    def textprosessing (t):
-        hasillowercase = Pemrosesan.penggabunganjudul(t)
-        print ("Hasil Preprosessing Inputan : ", hasillowercase)
-    textprosessing(t)
+
+    def textprosessing (t, datajudul):
+        hasilpreprosessinginputan = Pemrosesan.eksekusiinputan(t, datajudul)
+        print ("Hasil Preprosessing Inputan : ", hasilpreprosessinginputan)
+
+        #hasispreprossesingjudul = pem
+    textprosessing(t, datajudul)
 
     #def textprosessingjudul (datajudul):
-    #    hasillowercase = Pemrosesan.penggabunganjudul(datajudul)
-    #    print ("Hasil Preprosessing Judul : ")
-    #    print (hasillowercase)
+    #    hasilpreprosessing = Pemrosesan.eksekusijudul(datajudul)
+    #    print ("Hasil Preprosessing Judul : ", hasilpreprosessing)
+        #sim_sort = myCosine.perhitungankemiripan(datajudul, hasillowercase)
+     #   return hasilpreprosessing
+    
     #textprosessingjudul(datajudul)
+
+    # def ambil_judul():
+
+    #     excel_data = pd.read_excel("F:/Skripsi/source/dataset.xlsx")
+    #     judul = excel_data ["JUDUL_LAPORAN"]
+    #     listjudul = InputOutput.outputfinal(judul)
+
+    #     return listjudul
+
+    # def hasilcosine(hasil):
+    #     hasilc = (hasil)
+
+    #     return hasilc
+    
+    # def listjudul():
+    #     listjudulx = InputOutput.datajudul()
+    #     return listjudulx
+    
+    
+    #def outputfinal (output):
+        #hasiloutput = myCosine.kirimdata(output = 0)
+        #listjudul = InputOutput.listjudul(datajudul)
+        #print (hasiloutput)
+
+        #for k, v in hasiloutput:
+        #    if v != 0.0:
+        #        print ("Hasil Similaritas : ", v)
+        #        print (listjudul[k])
+        #        print ()
 
     
     #def outputstemming (t):
