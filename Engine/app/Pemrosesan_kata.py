@@ -25,16 +25,16 @@ class Pemrosesan:
         for i in judul:
             judulx = str(i)
             hasillowercase = Pemrosesan.casefolding(judulx)
-            #hasilstopword = Pemrosesan.stopword_removal(hasillowercase)
-            #hasilstemming = Pemrosesan.stemming(hasilstopword)
+            hasilstopword = Pemrosesan.stopword_removal(hasillowercase)
+            hasilstemming = Pemrosesan.stemming(hasilstopword)
             #hasil = pd.Series(hasilstemming)
-            tampung.append(hasillowercase)
+            tampung.append(hasilstemming)
         
         #print (tampung)
         #print("list Judul : ",tampung)
         # #ModelTF_IDF.createmodel(hasilstemmingteks,tampung)
-        ModelTF_IDF.createmodel(hasillowercaseteks,tampung)
-        # #myCosine.perhitungankemiripan(hasilstemmingteks)
+        ModelTF_IDF.createmodel(hasilstemmingteks,tampung)
+        # ModelTF_IDF.createmodel(hasilstemmingteks)
         
         
             

@@ -16,9 +16,12 @@ class ModelTF_IDF:
 
         df = pd.DataFrame(X.T.toarray(), index=vectorizer.get_feature_names_out())
         print (df)
+        datajudul = pd.read_excel("F:/Skripsi/source/dataset.xlsx")
 
         print ("text : ",text)
         print (df.shape)
+
+        #######################################################################
 
         output_vec = vectorizer.transform([text]).toarray().reshape(df.shape[0])
         print("output_vec shape:", output_vec.shape)
