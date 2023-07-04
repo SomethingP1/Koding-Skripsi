@@ -12,7 +12,7 @@ class Pemrosesan:
 
     def eksekusiinputan(teks, judul):
         #tampungteks = []
-        hasillowercaseteks = Pemrosesan.lowercase(teks)
+        hasillowercaseteks = Pemrosesan.casefolding(teks)
         hasilstopwordteks = Pemrosesan.stemming(hasillowercaseteks)
         hasilstemmingteks = Pemrosesan.stemming(hasilstopwordteks)
         
@@ -24,13 +24,13 @@ class Pemrosesan:
         tampung = []
         for i in judul:
             judulx = str(i)
-            hasillowercase = Pemrosesan.lowercase(judulx)
+            hasillowercase = Pemrosesan.casefolding(judulx)
             #hasilstopword = Pemrosesan.stopword_removal(hasillowercase)
             #hasilstemming = Pemrosesan.stemming(hasilstopword)
             #hasil = pd.Series(hasilstemming)
             tampung.append(hasillowercase)
         
-        print (tampung)
+        #print (tampung)
         #print("list Judul : ",tampung)
         # #ModelTF_IDF.createmodel(hasilstemmingteks,tampung)
         ModelTF_IDF.createmodel(hasillowercaseteks,tampung)
@@ -72,7 +72,7 @@ class Pemrosesan:
     # def casefolding (textawal):
     #     text = textawal.str.lower()
     
-    def lowercase(text):    
+    def casefolding(text):    
         text = str.lower(text)
         text = re.sub('[%s]' % re.escape(string.punctuation.replace('?', '')), '', text)
         text = re.sub("[^a-zA-Z0-9\s:\n\\n]+@]", '', text)

@@ -42,14 +42,16 @@ class myCosine:
 
     ##    return hasilpembobotan
 
-    def load_tf_idf_model(path):
-        with open(path, "rb") as fopen:
-            model = pickle.load(fopen)
+    # def load_tf_idf_model(path):
+    #     with open(path, "rb") as fopen:
+    #         model = pickle.load(fopen)
         
-        return model
+    #     return model
     
     def perhitungankemiripan(inputan, model):
         vectorizer = TfidfVectorizer()
+        print ("text : ",inputan)
+        print (model.shape)
         # model = myCosine.load_tf_idf_model("Model TF-IDF.pickle")
         # #print(model)
         # #print (inputan)
@@ -67,8 +69,9 @@ class myCosine:
         #     return
 
         
-        output_vec = vectorizer.fit_transform([inputan]).toarray().reshape(model.shape[0])
-        print (output_vec)
+        
+        output_vec = vectorizer.transform([inputan]).toarray().reshape(model.shape[0])
+        print("output_vec shape:", output_vec.shape)
         sim = {}
 
         # for i in range(705):
@@ -79,14 +82,14 @@ class myCosine:
         #     print("nilai : ", sim_sort)
 
         #     return
-        for i in range (705):
-            sim[i] = np.dot(model.iloc[:,i], output_vec) / np.linalg.norm(model.iloc[:,i]) * np.linalg.norm (output_vec)
+        # for i in range (703):
+        #     sim[i] = np.dot(model.loc[:,i].values, output_vec) / np.linalg.norm(model.loc[:,i]) * np.linalg.norm (output_vec)
 
-        sim_sort = sorted(sim.items(), key=lambda x: x[0], reverse = True)
+        # sim_sort = sorted(sim.items(), key=lambda x: x[0], reverse = True)
 
-        print("nilai : ",sim_sort)
+        # print("nilai : ",sim_sort)
 
         
-        return
+        # return
 
                     
