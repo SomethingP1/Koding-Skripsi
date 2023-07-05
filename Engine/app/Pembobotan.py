@@ -7,16 +7,17 @@ import pickle
 class ModelTF_IDF:
 
     
-    def createmodel(text, corpus):
+    def createmodel(text):
         vectorizer = TfidfVectorizer()
         
         #vectorizer.fit_transform(corpus)
-
+        panggil = pd.read_csv("C:/xampp/htdocs/Skripsi/Hasil-Preprocessing.csv")
+        corpus = panggil ["0"]
         X = vectorizer.fit_transform(corpus)
 
         df = pd.DataFrame(X.T.toarray(), index=vectorizer.get_feature_names_out())
         print (df)
-        datajudul = pd.read_excel("F:/Skripsi/source/dataset.xlsx")
+        #datajudul = pd.read_excel("F:/Skripsi/source/dataset.xlsx")
 
         print ("text : ",text)
         print (df.shape)

@@ -6,6 +6,7 @@ from nltk.corpus import stopwords
 from Pembobotan import *
 import pandas as pd
 import numpy as np
+import csv
 
 
 class Pemrosesan:
@@ -21,20 +22,22 @@ class Pemrosesan:
         #myCosine.perhitungankemiripan(hasillowercaseteks)
     
         
-        tampung = []
-        for i in judul:
-            judulx = str(i)
-            hasillowercase = Pemrosesan.casefolding(judulx)
-            hasilstopword = Pemrosesan.stopword_removal(hasillowercase)
-            hasilstemming = Pemrosesan.stemming(hasilstopword)
-            #hasil = pd.Series(hasilstemming)
-            tampung.append(hasilstemming)
+        # tampung = []
+        # for i in judul:
+        #     judulx = str(i)
+        #     hasillowercase = Pemrosesan.casefolding(judulx)
+        #     hasilstopword = Pemrosesan.stopword_removal(hasillowercase)
+        #     hasilstemming = Pemrosesan.stemming(hasilstopword)
+        #     #hasil = pd.Series(hasilstemming)
+        #     tampung.append(hasilstemming)
         
+        # pd.DataFrame(tampung).to_csv('Hasil-Preprocessing.csv')
+
         #print (tampung)
         #print("list Judul : ",tampung)
         # #ModelTF_IDF.createmodel(hasilstemmingteks,tampung)
-        ModelTF_IDF.createmodel(hasilstemmingteks,tampung)
-        # ModelTF_IDF.createmodel(hasilstemmingteks)
+        #ModelTF_IDF.createmodel(hasilstemmingteks,tampung)
+        ModelTF_IDF.createmodel(hasilstemmingteks)
         
         
             
