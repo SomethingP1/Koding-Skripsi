@@ -31,14 +31,16 @@ class ModelTF_IDF:
         for i in range (703):
             sim[i] = np.dot(df.loc[:,i].values, output_vec) / np.linalg.norm(df.loc[:,i]) * np.linalg.norm (output_vec)
 
-        sim_sort = sorted(sim.items(), key=lambda x: x[0], reverse = True)
+        sim_sort = sorted(sim.items(), key=lambda x: x[1], reverse = True)
 
         print("nilai : ",sim_sort)
 
+        g=0
         for k, v in sim_sort:
             if v != 0.0:
-                print ("Nilai Similaritas : ", v)
-                print (corpus[k])
+                #print (g,".Nilai Similaritas : ", v)
+                print (g,corpus[k])
+                g += 1
                 print ()
 
         #myCosine.perhitungankemiripan(text, df)
