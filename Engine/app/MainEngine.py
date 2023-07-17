@@ -27,7 +27,7 @@ class MyEngine:
         #print()
         sim = {}
 
-        for i in range (704):
+        for i in range (len(corpus)):
             sim[i] = np.dot(df.loc[:,i].values, output_vec) / np.linalg.norm(df.loc[:,i]) * np.linalg.norm (output_vec)
 
         sim_sort = sorted(sim.items(), key=lambda x: x[1], reverse = True)
@@ -38,11 +38,11 @@ class MyEngine:
         for k, v in sim_sort:
             if v != 0.0:
                 print (g,corpus[k])
-                #print (".Nilai Similaritas : ", v)
+                print ("Nilai Similaritas : ", v)
                 g += 1
                 print ()
         print ("Judul yang di input :", text)
         print ()
 
 
-        return df
+        return sim_sort

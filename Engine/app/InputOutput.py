@@ -14,7 +14,7 @@ class InputOutput:
         
         return hasilinputan
     
-    t = datainput()
+    text = datainput()
 
     def ambil_data():
 
@@ -29,9 +29,9 @@ class InputOutput:
     datajudul = ambil_data()
 
 
-    def textprosessing (t, datajudul):
-        Pemrosesan.eksekusiinputan(t, datajudul)
+    def textprosessing (text, datajudul):
+        Pemrosesan.eksekusiinputan(text, datajudul)
 
         
-    textprosessing(t, datajudul)
+    textprosessing(text, datajudul)
 

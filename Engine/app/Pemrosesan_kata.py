@@ -33,7 +33,6 @@ class Pemrosesan:
         MyEngine.TFIDF_Cosine(hasilstopwordteks)
         
 
-        return
     
     def casefolding(text):    
         text = str.lower(text)
