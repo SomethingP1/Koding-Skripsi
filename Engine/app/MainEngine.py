@@ -34,15 +34,4 @@ class MyEngine:
 
         #print("nilai : ",sim_sort)
 
-        g=1
-        for k, v in sim_sort:
-            if v != 0.0:
-                print (g,corpus[k])
-                print ("Nilai Similaritas : ", v)
-                g += 1
-                print ()
-        print ("Judul yang di input :", text)
-        print ()
-
-
         return sim_sort

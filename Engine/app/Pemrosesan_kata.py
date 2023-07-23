@@ -18,19 +18,20 @@ class Pemrosesan:
         #hasilstemmingteks = Pemrosesan.stemming(hasilstopwordteks)
         
         
-        # tampung = []
-        # for i in judul:
-        #     judulx = str(i)
-        #     hasillowercase = Pemrosesan.casefolding(judulx)
-        #     hasilstopword = Pemrosesan.stopword_removal(hasillowercase)
-        #     #hasilstemming = Pemrosesan.stemming(hasilstopword)
+        tampung = []
+        for i in judul:
+            judulx = str(i)
+            hasillowercase = Pemrosesan.casefolding(judulx)
+            hasilstopword = Pemrosesan.stopword_removal(hasillowercase)
+             #hasilstemming = Pemrosesan.stemming(hasilstopword)
         #     #hasil = pd.Series(hasilstemming)
-        #     tampung.append(hasilstopword)
+            tampung.append(hasilstopword)
         
-        # pd.DataFrame(tampung).to_csv('Hasil-Preprocessing.csv')
+        pd.DataFrame(tampung).to_csv('Hasil-Preprocessing.csv')
 
         #print("list Judul : ",tampung)
-        MyEngine.TFIDF_Cosine(hasilstopwordteks)
+        nilaireturn = MyEngine.TFIDF_Cosine(hasilstopwordteks)
+        return nilaireturn
         
 
     
