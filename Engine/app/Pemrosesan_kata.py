@@ -1,12 +1,8 @@
-
 from nltk.tokenize import word_tokenize
 import string, re
-from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 from nltk.corpus import stopwords
 from MainEngine import *
 import pandas as pd
-import numpy as np
-import csv
 
 
 class Pemrosesan:
@@ -15,7 +11,7 @@ class Pemrosesan:
     
         hasillowercaseteks = Pemrosesan.casefolding(teks)
         hasilstopwordteks = Pemrosesan.stopword_removal(hasillowercaseteks)
-        #hasilstemmingteks = Pemrosesan.stemming(hasilstopwordteks)
+        
         
         
         tampung = []
@@ -23,13 +19,10 @@ class Pemrosesan:
             judulx = str(i)
             hasillowercase = Pemrosesan.casefolding(judulx)
             hasilstopword = Pemrosesan.stopword_removal(hasillowercase)
-             #hasilstemming = Pemrosesan.stemming(hasilstopword)
-        #     #hasil = pd.Series(hasilstemming)
             tampung.append(hasilstopword)
         
         pd.DataFrame(tampung).to_csv('Hasil-Preprocessing.csv')
 
-        #print("list Judul : ",tampung)
         nilaireturn = MyEngine.TFIDF_Cosine(hasilstopwordteks)
         return nilaireturn
         
@@ -62,15 +55,6 @@ class Pemrosesan:
 
 
         return hasil
-    
-    def stemming (text):
-        factory = StemmerFactory()
-        stemmer = factory.create_stemmer()
-        wordx = [stemmer.stem(word) for word in text.split()]
-        hasil = ' '.join(wordx)
-
-        return hasil
-    
     
     
 

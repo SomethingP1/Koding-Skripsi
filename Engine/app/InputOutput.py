@@ -1,8 +1,4 @@
 import pandas as pd
-import string
-import re
-import nltk
-import numpy as np
 from Pemrosesan_kata import Pemrosesan
 from tkinter import *
 from tkinter import ttk
@@ -54,54 +50,15 @@ namajudul.pack()
 process = Button(app, text= 'Cari', command=inputan)
 process.pack(padx=10, pady=5)
 
-tree = ttk.Treeview(app, columns=('Index', 'Judul', 'Tingkat Kemiripan'), show='headings')
-tree.column('Index', width=60)
+tree = ttk.Treeview(app, columns=('No', 'Judul', 'Tingkat Kemiripan'), show='headings')
+tree.column('No', width=60)
 tree.column('Judul', width=400)
 tree.column('Tingkat Kemiripan', width=200)
 
-tree.heading('Index', text='Index')
+tree.heading('No', text='Index')
 tree.heading('Judul', text='Judul')
 tree.heading('Tingkat Kemiripan', text='Tingkat Kemiripan')
 tree.pack()
 
 
 app.mainloop()
-
-
-# class InputOutput:
-    # def datainput():
-    #     hasilinputan = input("Masukan Judul Kerja Praktik : ")
-        
-    #     return hasilinputan
-    
-    # text = datainput()
-
-    # def ambil_data():
-
-    #     excel_data = pd.read_excel("F:/Skripsi/source/dataset.xlsx")
-    #     judul = excel_data ["JUDUL_LAPORAN"]
-    #     print ("judul raw : ",judul)
-        
-        
-
-    #     return judul
-    
-    # datajudul = ambil_data()
-
-
-    # def textprosessing (text, datajudul):
-    #     hasilsemua = Pemrosesan.eksekusiinputan(text, datajudul)
-    #     g=1
-    #     for k, v in hasilsemua:
-    #         if v != 0.0:
-    #             print (g,datajudul[k])
-    #             print ("Nilai Similaritas : ", v)
-    #             g += 1
-    #             print()
-                
-    #     print ("Jumlah Judul : ",g-1)
-    #     print ("Judul yang di input :", text)
-    #     print ()
-
-        
-    # textprosessing(text, datajudul)
